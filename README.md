@@ -34,4 +34,5 @@ Es fehlen bis jetzt :
 
 ### Aufgaben: 
 - 5 a
+- 6 b
 
