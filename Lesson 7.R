@@ -14,6 +14,7 @@ dice40 = sample(dice, 40, replace = TRUE)
 # a) Find the mean of these lists.
 
 mean(dice05)
+library(Hmisc)
 describe(dice05,type=2)
 
 sd(dice05, na.rm=TRUE)/sqrt(length(dice05[!is.na(dice05)])) 

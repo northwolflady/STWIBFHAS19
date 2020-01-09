@@ -29,3 +29,9 @@ Es fehlen bis jetzt :
 - 7 b
 - 8
 - 9 
+
+## Lektion  9 
+
+### Aufgaben: 
+- 5 a
+
