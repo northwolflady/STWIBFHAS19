@@ -36,3 +36,8 @@ Es fehlen bis jetzt :
 - 5 a
 - 6 b
 
+## Lektion  10 
+
+### Aufgaben: 
+- 7
+
