@@ -1,0 +1,34 @@
+#Install openxlsx
+install.packages("openxlsx")
+library(openxlsx)
+
+#Install combinat => listing samples
+
+install.packages("combinat")
+library(combinat)
+
+
+#RDice
+install.packages("Rdice")
+library("Rdice")
+
+
+#Fraction
+install.packages("MASS")
+library(MASS)
+
+#Testing
+install.packages("testthat")
+library("testthat")
+
+#Bayes’ Theorem
+install.packages("LaplacesDemon")
+library("LaplacesDemon")
+
+#ghyp
+install.packages("ghyp")
+library("ghyp")
+
+#psych
+install.packages("psych")
+library("psych")

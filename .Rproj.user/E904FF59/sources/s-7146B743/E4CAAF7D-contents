@@ -1,0 +1,316 @@
+#1 Consider the experiment of tossing a coin three times
+#a Develop a tree diagram for the experiment.
+coin<-c('H','T')
+sample(coin,size = 3, replace = TRUE)
+
+#What is the probability for each experimental outcome?
+1/2*1/2*1/2 # => 1/8
+
+#2 
+# A company that franchises coffee houses conducted taste tests for a new
+# coffee product. Four blends were prepared, then randomly chosen individuals
+# were asked to taste the blends and state which one they liked best. Results of
+# the taste test for 100 individuals are given.
+
+#a Define the experiment being conducted. How many times was it repeated?
+
+# 4 => Blens , 100 => people
+
+#????????????????????????????????????????
+
+
+
+#3 
+# Consider the experiment of rolling a pair of dice. Suppose that we are
+# interested in the sum of the face values showing on the dice.
+dice<-c(1:6)
+#a) How many sample points are possible?How many sample points are possible?
+6*6
+
+#b) List the sample points.
+row1<-c(2:7)
+row2<-c(3:8)
+row3<-c(4:9)
+row4<-c(5:10)
+row5<-c(6:11)
+row6<-c(7:12)
+rowCombination = c(row1,row2,row3,row4,row5,row6);
+matrix(rowCombination,nrow=6,byrow=TRUE)
+#with => combn
+combn(x=rowCombination,1)
+
+#c) What is the probability of obtaining a value of 7?
+
+amountOfSeven = print(length(which(rowCombination==7)))
+fractions(amountOfSeven/(6*6))
+
+#d) What is the probability of obtaining a value of 9 or greater?
+amountHigherEight = print(length(which(rowCombination>8)))
+fractions(amountHigherEight/(6*6))
+
+#e) Because each roll has six possible even values (2, 4, 6, 8, 10 and 12)
+# and only five possible odd values (3, 5, 7, 9 and 11), the dice should
+# show even values more often than odd values. Do you agree with this
+# statement? Explain.
+
+evenNumbers = c(2,4,6,8,10,12)
+oddNumbers = c(3,5,7,9,11)
+
+ammountOfEvenNumbers = length(which(rowCombination %in% evenNumbers))
+ammountOfOddNumbers = length(which(rowCombination %in% oddNumbers))
+p.even = ammountOfEvenNumbers/36
+p.odd = ammountOfOddNumbers/36
+fractions(p.even)
+fractions(p.odd)
+
+#f) What method did you use to assign the probabilities requested?
+#schaue oben
+
+#4 
+# Suppose that a manager of a large apartment complex provides the following
+# subjective probability estimates about the number of vacancies that will exist
+# next month.
+
+#a) No vacancies.
+paste(round((0.1)*100,digits=3),"%",sep="")
+#b) At least four vacancies.
+paste(round((0.15)*100,digits=3),"%",sep="")
+#c) Two or fewer vacancies
+paste(round((0.3+0.15+0.1)*100,digits=3),"%",sep="")
+
+
+# 5
+# Here we will create our own Monte Carlo simulations. Open a new document.
+# We need to set-up the calculators to be different to each other with respect
+# to their random number generation. To do this we set a new randSeed
+# in a calculator page. Now open a new spreadsheet page where we will
+# generate our data.
+
+# a) Here we will create our own Monte Carlo simulations. Open a new document.
+# We need to set-up the calculators to be different to each other with respect
+# to their random number generation. To do this we set a new randSeed
+# in a calculator page. Now open a new spreadsheet page where we will
+# generate our data.
+
+
+experiments = 1000
+coin = c("H","T")
+outcome = NULL
+for(e in 1:experiments){
+  toss = sample(coin,1)
+  outcome = c(outcome,toss)
+}
+event = outcome[outcome=="H"]
+length(event)/experiments
+
+# b) We now want to simulate rolling a die to investigate how often a six
+# appears. We need to make the following modifications
+
+experiments = 1000
+dice = 1:6
+outcome = NULL
+for(e in 1:experiments){
+  toss = sample(dice,1)
+  outcome = c(outcome,toss)
+}
+event = outcome[outcome==6]
+length(event)/experiments
+
+
+# c) We now simulate rolling two dice to investigate how often the sum of
+# the two dice add up to six. We modify outcome as follows:
+experiments = 1000
+dice = 1:6
+outcome = NULL
+for(e in 1:experiments){
+  toss = sum(sample(dice,2, replace = TRUE))
+  outcome = c(outcome,toss)
+}
+event = outcome[outcome==6]
+length(event)/experiments
+
+# d) We simulate the rolling of 10 dice and investigate how often a sum
+# value between 30 and 40 appears. We need the following modifications:
+
+experiments = 1000
+dice = 1:6
+outcome = NULL
+for(e in 1:experiments){
+  toss = sum(sample(dice,10,replace = TRUE))
+  outcome = c(outcome,toss)
+}
+event = outcome[outcome>=30 & outcome <=40]
+length(event)/experiments
+
+# e)We now simulate poker hands and investigate the frequency of hands
+# that contain at least one ace. First define the deck of cards as being the
+# numbers 1 to 52:
+
+#zum dieses experiment zu vereinfachen, definieren wir hier, dass karet 1-4 alles Asse sind
+
+experiments = 10000
+cards = 1:52
+outcome = NULL
+existAce = 0
+for(e in 1:experiments){
+  hand = sample(cards,5,replace = FALSE)
+  if(which(hand>=1 & hand<=4)){
+    existAce = existAce + 1
+  }
+  hand = NULL
+}
+existAce/experiments
+
+
+# 6
+# A survey of magazine subscribers showed that 45.8 per cent rented a car
+# during the past 12 months for business reasons, 54 per cent rented a car
+# during the past 12 months for personal reasons, and 30 per cent rented a car
+# during the past 12 months for both business and personal reasons.
+
+#a) What is the probability that a subscriber rented a car during the past 12 months for business or personal reasons?
+
+businessPercentage = 45.8
+personalPercentage = 54
+combinedPercentage = 30
+
+businessOnly = 45.8-30
+personalOnly = 54-30
+
+businessOrPersonal = businessPercentage + personalOnly
+paste(round((businessOrPersonal),digits=3),"%",sep="")
+
+#b) What is the probability that a subscriber did not rent a car during the past 12 months for either business or personal reasons?
+
+notRent = 100-businessOrPersonal
+paste(round((notRent),digits=3),"%",sep="")
+
+
+# 7
+# Employee A does the finishing work on 40% of the output at a clothing
+# factory, employee B does 35% and employee C 25%. Of the items finished
+# by employee A, 10% are defective, 20% of the items finished by B are
+# defective and 30% of those finished by C.
+
+employeeA = 40
+employeeB = 35
+employeeC = 25
+
+employeeADefective = 10
+employeeBDefective = 20
+employeeCdefective = 30
+
+# a) If an item is selected at random from the large number of items finished
+# by the factory during the day, what is the probability it is defective?
+# What is the probability it is non-defective?
+
+outputA = employeeA * ((100-employeeADefective)/100)
+outputB = employeeB * ((100-employeeBDefective)/100)
+outputC = employeeC * ((100-employeeCdefective)/100)
+#completOutput = outputA+outputB+outputC -1 => this is the fix
+completOutput = outputA+outputB+outputC
+# Ich habe 81.5 erhalten, die Lösungen sagen 80.5. fehler?????
+
+#b) What is the probability that a defective item was finished by C?
+
+fullChangeOfDefective = 100-80.5
+
+defectByA = 40-outputA
+defectByB = 35-outputB
+defectByC = 25-outputC
+
+fullDefect = defectByA + defectByB + defectByC
+
+# howBigIsTheChanceOfC = defectByC/(fullDefect+1) => this is the fix 
+howBigIsTheChanceOfC = defectByC/(fullDefect)
+
+# c) What is the probability an item is defective and was finished by C?
+
+fullChangeOfDefective * defectByC/(fullDefect+1)
+#(fullChangeOfDefective * defectByC/(fullDefect+1))+1 => fix
+
+# d) If an item is non-defective, what is the probability it was finished by B?
+
+chanceOfNonDefective = 80.5
+outputB/chanceOfNonDefective
+
+# e) What is the probability an item is non-defective and/or finished by C?
+
+#1-(outputC)/(chanceOfNonDefective)+0.1 => this is the fixx
+1-(outputC)/(chanceOfNonDefective)
+
+#f) What is the probability an item is not finished by A or C, and is not defective?
+# => logik: es muss durch B fertigtgestellt werden 
+
+chanceOfB = outputB/100
+
+# 8
+# A sample of convictions and compensation orders issued at a number of
+# Manx courts was followed up to see whether the offender had paid the
+# compensation to the victim. Details by gender of offender are as follows:
+
+# Offender gender   Paid in full  Part paid   Nothing paid
+#           Male    754           62          61
+#           Female  157           7           6
+
+#a) What is the probability that no compensation was paid?
+
+fullConvictionsMale = 754 + 62 + 61
+fullConvictionsFemale = 157 + 7 + 6
+
+fullConvictions = fullConvictionsMale + fullConvictionsFemale
+
+notPaid = 61 + 6
+chanceOfNotPaid = notPaid/fullConvictions
+paste(round((chanceOfNotPaid*100),digits=2),"%",sep="")
+
+
+
+#b) What is the probability that the offender was not male given that compensation was part paid?
+
+chanceOfNotMale = fullConvictionsFemale/fullConvictions
+chanceOfNotMalePartPaid = 7/fullConvictions
+
+chanceFemalePartPaid = 7/fullConvictionsFemale
+
+chanceOfNotMale*chanceFemalePartPaid  
+
+7/fullConvictions
+#???????????????????????????????????????????????????
+
+# 9
+# The prior probabilities for events A1, A2, and A3 are P(A1) = 0.20,
+# P(A2) = 0.50 and P(A3) = 0.30. The conditional probabilities of event
+# B given A1, A2, and A3 are P(B | A1) = 0.50, P(B | A2) = 0.40 and
+# P(B | A3) = 0.30.
+
+a1.p = 0.2
+a2.p = 0.5
+a3.p = 0.3
+
+b.a1.p = 0.3
+b.a2.p = 0.4
+b.a3.p = 0.3
+
+#a) Compute P(B \ A1), P(B \ A2) and P(B \ A3). \=> geschnitten
+
+#P(A \ B) = P(A | B) * P(B):Multiplication Law
+# P(B | A1) = P(B\A1)/P(B)
+#P(B \ A1)/P(B) => P(0.3 \ 0.2)/0.2 => man weiss aber dass das resultat => 0.5
+
+
+
+getIntersectionProbabilty(c(0.5,0.2))
+
+getPercent(1,2)
+getIntersectionProbabilty(c(0.4,0.5))
+calculateACuttedWithB(0.3,0.3)
+
+
+#b) Apply Bayes’ theorem to compute the posterior probability P(A2 | B).
+#This required argument is the prior probability of A, or Pr(A). In this case A2 => 
+#This required argument is the conditional probability of B given A or Pr(B|A), and is known as the data, evidence, or likelihood.
+PrA <- c(0.2,1)
+PrBA <- c(0.1, 1)
+BayesTheorem(PrA, PrBA)
+#?????????????????????????

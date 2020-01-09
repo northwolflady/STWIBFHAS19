@@ -1,0 +1,86 @@
+install.packages("openxlsx")
+library(openxlsx)
+schoolData = read.xlsx(xlsxFile = './STWI_SchoolData.xlsx')
+#View(shoolData)
+
+sumCash = sum(schoolData$cash)
+#sumGender = sum(shoolData$gender) => typ
+
+heightInMeters = schoolData$height/100
+
+reaction = schoolData$reaction2-schoolData$reaction1
+
+siblingPresent = schoolData$siblings*schoolData$present
+
+freqOfTransport = table(schoolData$transport)
+#View(freqOfTransport)
+
+heights = schoolData$height
+selectedHeights = heights[heights>155 && heights<185]
+
+bins = 5 * 0:5 + 155
+
+heightsFreq = table(cut(selectedHeights,bins))
+#(heightsFreq)
+
+heightsFreqCum = cumsum(heightsFreq)
+#View(heightsFreqCum)
+
+hist(schoolData$fruit)
+
+hist(schoolData$pendulum)
+
+hist(schoolData$height)
+
+attach(schoolData)
+maleHeights = height[gender=='M']
+femaleHeights =  height[gender=='F']
+
+hist(maleHeights)
+hist(femaleHeights)
+
+maleHair = hair[gender=='M']
+femaleHair = hair[gender=='f']
+
+hist(maleHair)
+hist(femaleHair)
+
+hist(cash)
+
+shortestBoy = sort.int(maleHeights)[1]
+girsHigherThanShortestBoy = height[gender=='F' & height > shortestBoy]
+howManyGirlsAreTaller = length(girsHigherThanShortestBoy)
+
+height.m = height[gender=='M']
+height.f = height[gender=='F']
+
+
+foot.m = foot[gender=="M"]
+foot.f = foot[gender=="F"]
+
+
+hasTallesBoyBiggestFeet = which.max(height.m) == which.max(foot.m)
+hasTalleGirlBiggestFeet = which.max(height.f) == which.max(foot.f)
+
+
+
+boysBiigerThanFather = height[gender=='M' & height>father]
+
+girlsBiggerThanMotther = height[gender=='F' & height>mother]
+
+britishPolice = height[height>163 & height<=173]
+
+datesOfBirths = as.Date(schoolData$dob,origin="1899-12-30")
+youngest = max(datesOfBirths)
+oldest = min(datesOfBirths)
+differenceInDays = youngest-oldest
+
+
+months = format(datesOfBirths,"%m")
+hist(strtoi(months))
+
+table(gender,eye)
+
+plot(height~hair)
+
+

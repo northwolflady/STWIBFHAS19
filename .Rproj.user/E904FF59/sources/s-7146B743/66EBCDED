@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1578566403840.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "66EBCDED",
+    "lastKnownWriteTime" : 3256491969822417506,
+    "last_content_update" : 1578566403840,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "3FD758B5",
+        "caption" : "schoolData",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=schoolData&cache_key=3FD758B5",
+        "displayedObservations" : 19,
+        "environment" : "",
+        "expression" : "schoolData",
+        "object" : "schoolData",
+        "preview" : 0,
+        "totalObservations" : 19,
+        "variables" : 23
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

@@ -1,0 +1,7 @@
+install.packages("devtools")
+library("devtools")
+
+install_github('maxmayr95/STWIBFH',force = TRUE)
+
+install_github('maxmayr95/STWIBFH',force = TRUE, ref = "lesson-5")
+library("STWIBFH")
