@@ -159,3 +159,6 @@ pST = 0.038/(0.038+0.0768)
 # than 10 minutes. What is the probability that the test returns a
 # result in less than 5 minutes?
 
+#P(t<5) = (5 - (6-(10-6)))* (1/(10-(6-(10-6)))) = (5-2)*1/8 = 3/8 = 0.375
+
+pT = (5 - (6-(10-6)))* (1/(10-(6-(10-6))))
