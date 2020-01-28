@@ -96,6 +96,49 @@ mean(distance)
 onlySibling = present[siblings>=1]/siblings[siblings>=1]
 mean(onlySibling)
 
+sum(present)/sum(siblings)
+
+# schoolData = read.xlsx(xlsxFile = './stwi-school-data-new.xlsx')
+# attach(schoolData)
+# sum(schoolData$siblings)
+# count = 1
+# presents = c()
+# while(count<=length(schoolData$present)){
+#   #print(schoolData$present[count])
+#   print(schoolData$siblings[count])
+#   siblinCount = 0
+#   while (siblinCount<=schoolData$siblings[count]) {
+#     print("go")
+#     print(schoolData$present[count])
+#     if(schoolData$present[count]=="_"){
+#       presents = c(presents, 0)
+#     }else{
+#       presents = c(presents, schoolData$present[count])
+#     }
+#     
+#     siblinCount = siblinCount+1
+#   }
+#   
+#   count = count + 1
+# }
+# mean(as.numeric(presents))
+# 
+# 
+# count = 1
+# presents = c()
+# while(count<=length(schoolData$present)){
+#   #print(schoolData$present[count])
+#   print(schoolData$siblings[count])
+#   siblinCount = 0
+#   presents = c(presents, schoolData$present[count]/(schoolData$siblings[count]+1))
+#   
+#   
+#   count = count + 1
+# }
+# mean(presents)
+
+
+
 #????????????????????????????
 
 
