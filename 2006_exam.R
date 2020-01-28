@@ -21,7 +21,7 @@
 
 # 6 => 22%
 # 7 => 4%
-4/22
+4/(22+4)
 
 
 # c) The company create a survey to find out how their customers rate their tours.
