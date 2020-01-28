@@ -735,7 +735,7 @@ sampleSize = 22
 beyondPrimarySchool = 10/100
 beyondPrimaryCount = 5
 pHat = 5/22
-prop.test(x=100,n=10, p = pHat)
+prop.test(x=10,n=100, p = pHat)
 
 
 
