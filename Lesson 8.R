@@ -200,38 +200,36 @@ newLength = (pHat* (1-pHat)) / (me/z)^2
 
 # b) How large a sample should be selected if no planning value for the
 # proportion could be specified?
-# ????????????????????????????????????????????
+# solved by going back to 6 (im Unterricht gemacht)
+phatList <- seq(from=0, to=1, length.out=101)
+estimatedList <- phatList * (1-phatList)/(0.05/zval)^2
+
+max(estimatedList)
+plot(estimatedList~phatList)
+
+estimatedN <- 0.5*(1-0.5)/(0.05/zval)^2
 
 # 8 How many observations at least would be needed such that the margin of
 # error for the pendulum timings will be less than 0.05?
 attach(schoolData)
 
-#Erste überlegung: Margin of Error soll genau 0.05 sein 
-me <- z*sqrt((phat*(1-phat))/n)
-
-0.05 <- z*sqrt((phat*(1-phat))/n)
-pHat = length/length(pendulum)
-
-#???????????????????????????????????????????????
+s<-sd(pendulum)
+((1.96*s)/0.05)^2
 
 # 9
 # We saw above that the margin of error for the proportion of girls with blue
-# eyes is approximately 26%. How large should the sample be at least if we
+# eyes is approximately 27%. How large should the sample be at least if we
 # wanted a margin or error less than 5%?
 
-girlsWithBlueEyes = eye[gender=='F' & eye=='Blue']
-n = length(eye[gender=='F'])
-pHat = length(girlsWithBlueEyes)/n
-alpha <- 1-0.9
-z <- qnorm(alpha/2)
+# siehe Shared One Note
+# Daten aus Aufgabe 5
+n <- length(gender[gender=='F'])
+x <-length(gender[gender=='F' & eye=='Blue'])
+phat <- x/n
+alpha <- 0.10
+z <- abs(qnorm(alpha/2))
 
-ME = abs(z)*sqrt((pHat*(1-pHat))/n)
-
-(Me * abs(z))^2 = (pHat*(1-pHat))/n
-
-n = (pHat*(1-pHat)) / (0.05 * abs(z))^2
-
-#???????????????????????????????????????????????????????????????
+(phat*(1-phat)*z^2)/(0.05^2)
 
 
 
