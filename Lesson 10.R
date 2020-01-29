@@ -110,12 +110,11 @@ df <- n1+n2
 #   the-Month-Club members spend more hours per week watching television
 # than reading?
 
-detach(schoolData)
-tvData = read.xlsx(xlsxFile = './TVRead.xlsx')
-attach(tvData)
+detach(SchoolData)
+TVRead <- read.xlsx(xlsxFile='/...TVRead.xlsx', sheet='Data', colNames=TRUE)
+attach(TVRead)
 
-full = Television / Reading #werte > 1 lesen mehr 
-#?????????????????????????? machi speter, bi jetzt z müed
+t.test(Television,Reading,alternative="greater")
 
 # 8
 # In a test of the quality of two television commercials, each commercial was

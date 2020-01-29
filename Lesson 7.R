@@ -87,8 +87,14 @@ sd(p)
 #b) What is the probability that the sample mean is within 3 strokes of the
 # population mean for the sample of male golfers?
 
-p3 <- diff(rnorm(nMale, mean = 14.63, sd = devitation))
+pnorm(98,mean=95,sd=(14/sqrt(30))) - pnorm(92,mean=95,sd=(14/sqrt(30)))
 
+# c) What is the probability that the sample mean is within 3 strokes of the 
+# population mean for the sample of female golfers?
+pnorm(109,mean=106,sd=(14/sqrt(45))) - pnorm(103,mean=106,sd=(14/sqrt(45)))
+
+#d) In which case is the probability higher (b or c)? Why?
+#In c, because of the larger sample size --> smaller standard error
 
 
 # 6
@@ -102,15 +108,11 @@ p3 <- diff(rnorm(nMale, mean = 14.63, sd = devitation))
 
 # a) What is the probability the sample proportion will be within +-0.04 of
 # the population proportion experiencing click fraud?
+#population proportion =40% =0.4
+m<-0.4
+se<-sqrt((0.4*0.6)/380)
 
-lengthSample = 380 
+pnorm(0.44,m,se)-pnorm(0.36,m,se)
 
-p <- diff(pnorm(c(-0.004,0.004)*sqrt(lengthSample)))
-
-sol = 1+ (pi*(1-pi)/lengthSample)
-
-sol = (pi*(1-pi)/lengthSample)
-sqrt(sol)
-
-#?????????????????
-
+#b) What is the probability the sample proportion will be greater than 0.45?
+1-pnorm(0.45,m,se)
